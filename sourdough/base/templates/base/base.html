@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sourdough Project</title>
+
+    {% block site_css %}
+      {% compressed_css 'common' %}
+    {% endblock %}
   </head>
 
   <body>
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
+    {% block site_js %}{% endblock %}
   </body>
 </html>

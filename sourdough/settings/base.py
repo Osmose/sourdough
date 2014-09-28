@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'sourdough.base',
 
     # Third-party apps
+    'pipeline',
 
     # Django apps
     'django.contrib.admin',
@@ -41,6 +42,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_LOADERS = (
+    'jingo.Loader',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
 ROOT_URLCONF = 'sourdough.urls'
 
 WSGI_APPLICATION = 'sourdough.wsgi.application'
@@ -55,15 +62,36 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 
 # Third-party Libary Settings
 ########################################################################
-
 # Add any settings for third-party libraries here.
+
+JINJA_CONFIG = {
+    'extensions': [
+        'pipeline.jinja2.ext.PipelineExtension',
+    ],
+}
 
 
 # Project-specific Settings
 ########################################################################
-
 # Add any project-specific settings here.
+
+# CSS bundles
+PIPELINE_CSS = {
+    'common': {
+        'source_filenames': (
+          'css/base.css',
+        ),
+        'output_filename': 'css/common.css',
+        'extra_context': {
+            'media': 'screen,projection,tv',
+        },
+    },
+}
+
+# JS Bundles
+PIPELINE_JS = {}
