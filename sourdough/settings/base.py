@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'sourdough.base',
 
     # Third-party apps
+    'django_nose',
     'pipeline',
 
     # Django apps
@@ -64,6 +65,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+# Test config
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 
 # Third-party Libary Settings
