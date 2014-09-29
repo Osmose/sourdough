@@ -40,6 +40,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 )
 
 TEMPLATE_LOADERS = (
@@ -69,11 +70,20 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 ########################################################################
 # Add any settings for third-party libraries here.
 
+# Jinja environment config (via jingo)
 JINJA_CONFIG = {
     'extensions': [
         'pipeline.jinja2.ext.PipelineExtension',
     ],
 }
+
+# Content Security Policy (via django-csp)
+CSP_SCRIPT_SRC = (
+    '"self"',
+)
+CSP_STYLE_SRC = (
+    '"self"',
+)
 
 
 # Project-specific Settings
