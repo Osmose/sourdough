@@ -23,6 +23,7 @@ INSTALLED_APPS = (
     # Third-party apps
     'django_nose',
     'pipeline',
+    'tower',
 
     # Django apps
     'django.contrib.admin',
@@ -99,6 +100,15 @@ CSP_SCRIPT_SRC = (
 CSP_STYLE_SRC = (
     '"self"',
 )
+
+# Tower l10n/i18n
+ROOT = BASE_DIR
+DOMAIN_METHODS = {
+    'messages': [
+        ('sourdough/**.py', 'tower.extract_tower_python'),
+        ('sourdough/**.html', 'tower.extract_tower_template'),
+    ]
+}
 
 
 # Project-specific Settings
