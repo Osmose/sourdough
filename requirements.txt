@@ -4,3 +4,4 @@ django-csp==2.0.3
 django-pipeline==1.3.25
 jingo==0.7
 git+https://github.com/django-nose/django-nose.git@b81f8471e74b9dd95581c39a17eac2657dbb72fe
+django-session-csrf==0.5

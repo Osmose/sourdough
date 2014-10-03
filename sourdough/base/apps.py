@@ -2,6 +2,8 @@ from django.apps import AppConfig
 
 import session_csrf
 
+from sourdough.base.admin import monkeypatch as admin_monkeypatch
+
 
 class BaseConfig(AppConfig):
     name = 'sourdough.base'
@@ -15,3 +17,4 @@ class BaseConfig(AppConfig):
 
     def apply_monkeypatches(self):
         session_csrf.monkeypatch()
+        admin_monkeypatch()
