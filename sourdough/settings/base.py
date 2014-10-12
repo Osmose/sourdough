@@ -89,6 +89,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # Jinja environment config (via jingo)
 JINJA_CONFIG = {
     'extensions': [
+        'jinja2.ext.i18n',
         'pipeline.jinja2.ext.PipelineExtension',
         'tower.template.i18n',
     ],
