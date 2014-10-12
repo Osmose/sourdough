@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>Sourdough Project</h1>
-  <p>Congratulations, you've successfully created a new project from the Sourdough template!</p>
+  <p>{{ _('Congratulations, you\'ve successfully created a new project from the Sourdough template!') }}</p>
   <p>{{ foo }}</p>
   <p><form method="POST">{{ csrf() }}<input type="hidden" name="bar" value="biff"><button type="submit">Biff!</button></form></p>
 {% endblock %}

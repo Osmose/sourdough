@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
 # Django Settings
@@ -90,6 +90,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 JINJA_CONFIG = {
     'extensions': [
         'pipeline.jinja2.ext.PipelineExtension',
+        'tower.template.i18n',
     ],
 }
 
@@ -103,10 +104,14 @@ CSP_STYLE_SRC = (
 
 # Tower l10n/i18n
 ROOT = BASE_DIR
+TEXT_DOMAIN = 'messages'
+STANDALONE_DOMAINS = [TEXT_DOMAIN, 'javascript']
+TOWER_KEYWORDS = {'_lazy': None}
+TOWER_ADD_HEADERS = True
 DOMAIN_METHODS = {
     'messages': [
-        ('sourdough/**.py', 'tower.extract_tower_python'),
-        ('sourdough/**.html', 'tower.extract_tower_template'),
+        ('**.py', 'tower.management.commands.extract.extract_tower_python'),
+        ('**/templates/**.html', 'tower.management.commands.extract.extract_tower_template'),
     ]
 }
 
